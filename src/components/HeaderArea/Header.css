@@ -1,0 +1,99 @@
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+.body{
+    font: 1.3rem;
+    width: 100%;
+}
+
+.HeaderArea {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 95%;
+    height: 60px;
+    border-bottom: 1.5px solid #c4bebe;
+    margin-left: auto;
+}
+
+.button {
+    margin-left: 25px;
+    background-color: white;
+    border: none;
+    font-size: 20px;
+}
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    height: 30px;
+    margin-right: 30px;
+}
+
+.Search {
+    display: flex;
+    margin: auto;
+        
+}
+
+.Search:focus {
+    border: none;
+}
+.Search input {
+    border: 1.5px solid #c4bebe;
+    width: 550px;
+}
+
+.Search input:focus{
+    border: none;
+}
+.search {
+    border: 1.5px solid #c4bebe;
+    width: 70px;
+    align-items: center;
+    height: 28px;
+    background-color: #f7f7f7;
+    margin-right: 20px;
+    padding-top: 8px;
+}
+
+.Voice {
+    border: 1px solid #c4bebe;
+    border-radius: 50%;
+    background-color: #f7f7f7;
+    
+    
+}
+.icons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    
+}
+
+.icon {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    
+}
+
+.icon > b {
+    border-radius: 50%;
+    padding: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #170645;
+    color: white;
+    margin-top: 10px;
+}
+
+.youtube {
+    margin-left: 5px;
+    margin-bottom: 3px;
+    font-size: 20px;
+}
