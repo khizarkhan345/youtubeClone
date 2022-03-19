@@ -1,0 +1,42 @@
+
+.form-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 400px;
+    margin-left: auto;
+    
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.form > label {
+    font-size: 15px;
+}
+.form > input {
+    width: 200px;
+    height: 30px;
+    justify-content: center;
+}
+
+.form > select {
+    width: 207px;
+    height: 30px;
+}
+
+.form button {
+    width: 207px;
+    height: 30px;
+    background-color: lightgray;
+    color: red;
+}
+
+.form-data > h3 {
+    color: green;
+}

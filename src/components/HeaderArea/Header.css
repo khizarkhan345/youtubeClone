@@ -12,10 +12,11 @@ html{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 95%;
+    width: 94%;
     height: 60px;
     border-bottom: 1.5px solid #c4bebe;
     margin-left: auto;
+    
 }
 
 .button {

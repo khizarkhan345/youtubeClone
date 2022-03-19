@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Header from "../components/HeaderArea/Header";
 import SideBar from "../components/SideBarArea/SideBar";
 import Dashboard from "../components/DashboardArea/Dashboard";
-import UploadVideo from "../components/uploadVideo";
+import UploadVideo from "../components/UploadArea/uploadVideo";
 import ExplorePage from "../components/ExplorePage";
 import ShortsPage from "../components/ShortsPage";
 import LibraryPage from "../components/LibraryPage";
