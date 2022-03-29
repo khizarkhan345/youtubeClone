@@ -3,11 +3,39 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ConfigureStore from '../src/Store/ConfigureStore';
+import RootReducer from './Reducers/RootReducer';
+import {ReactReduxFirebaseProvider,  getFirebase, reactReduxFirebase, reduxFirebase } from 'react-redux-firebase';
+import thunk from 'redux-thunk';
+import {Provider} from 'react-redux';
+import AppRoutes from './routes/appRoutes';
+import { initializeApp } from 'firebase/app';
+import {createStore, applyMiddleware, compose} from 'redux';
+import app from './components/Firebase';
 
-ReactDOM.render(
+
+const rrfConfig = { Videos: 'Videos' }
+const store = createStore(RootReducer, 
+    applyMiddleware(thunk.withExtraArgument({getFirebase})),   
+  );
+
+
+  const rrfProps = {
+    app,
+    config: rrfConfig,
+    dispatch: store.dispatch,
+    // createFirestoreInstance // <- needed if using firestore
+  }
+
+const jsx = (
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+      <AppRoutes />  
+  </Provider>
+  </React.StrictMode>
+)
+ReactDOM.render(
+ jsx,
   document.getElementById('root')
 );
 

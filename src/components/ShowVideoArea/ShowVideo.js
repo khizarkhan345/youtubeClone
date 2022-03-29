@@ -5,11 +5,14 @@ import VideoThumbnail from 'react-video-thumbnail';
 const ShowVideo = (props) => {
     const [thumbnail, setThumbnail] = useState("")
     return (
+        <div>
         <div className="showVideo">
            <div className="video">
            <ReactPlayer url={props.url} width="280px" height="230px" controls="true" />
-             <h3>{props.title}</h3>
+             <h2>{props.title}</h2>
+
            </div> 
+        </div>
         </div>
     ) 
 }

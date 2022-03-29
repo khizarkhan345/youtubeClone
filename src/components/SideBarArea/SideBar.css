@@ -1,26 +1,43 @@
-
-
 .Header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80px;
-    height: 574.2px;
-    font-size: 12px;
-    position: fixed;
-    background-color: l#f7f7f7;
-    margin-top: 14px;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  height: 574.2px;
+  font-size: 12px;
+  position: fixed;
+  background-color: l#f7f7f7;
+  margin-top: 14px;
+  margin-right: 20px;
+
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation > button {
+  margin-right: 23px;
+}
 .navigation {
-   justify-content: flex-start;
-   margin-bottom: 25px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  
 }
 
 .Quick_icons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  
 }
+
+
+.link_class {
+  text-decoration: none;
+  color: black;
+} 

@@ -2,12 +2,16 @@
 
 .showVideo {
     display: flex;
-    flex: 0 0 0 380px;
-    margin-right: 20px;
+    align-items: center;
+    flex: 380 0 0 0;
+    margin-left: 30px;
+   
 } 
 
 
-
+.video > h3 {
+    text-align: center;
+}
 /* .video > ReactPlayer{
     
 } */

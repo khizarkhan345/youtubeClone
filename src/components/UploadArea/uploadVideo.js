@@ -2,10 +2,13 @@ import React from "react";
 import { useState } from 'react';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
-import { app } from '../Firebase';
+import  app  from '../Firebase';
 import './uploadVideo.css';
+import { addData } from "../../Action/videoData";
 import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { getDatabase, ref as DatabaseRef, set, push, onValue } from "firebase/database";
+import { connect } from "react-redux";
+
 const UploadVideo = (props) => {
   const [filePath, setFilePath] = useState("");
   const [title, setTitle] = useState("");
@@ -75,30 +78,39 @@ const UploadVideo = (props) => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           //console.log('File available at', downloadURL);
+          // const db = getDatabase(app);
+          // push(DatabaseRef(db, 'Videos/'), {
+          //   title: title,
+          //   type: type,
+          //   video_url: downloadURL
+          // }).then((result) => {
+          //   setUploadStatus(" Video Uploaded successfully")
+          //   //console.log(" Video Data added successfully")
+          // }).catch((err) => {
+          //   setUploadStatus("Error occurred while uploading Video")
+          //   //console.log(err, "Error occurred while uploading data");
+          // })
           const db = getDatabase(app);
-          push(DatabaseRef(db, 'Videos/'), {
+          const starCountRef = DatabaseRef(db, 'Users/'+ props.uid);
+          onValue(starCountRef, (snapshot) => {
+            const user_data = snapshot.val();
+            // const user_values = Object.values(user_data);
+             console.log(user_data);
+          setUploadStatus("Video Added Successfully");
+          const data = {
             title: title,
             type: type,
-            video_url: downloadURL
-          }).then((result) => {
-            setUploadStatus(" Video Uploaded successfully")
-            //console.log(" Video Data added successfully")
-          }).catch((err) => {
-            setUploadStatus("Error occurred while uploading Video")
-            //console.log(err, "Error occurred while uploading data");
-          })
-
+            video_url: downloadURL,
+            uploadedBy: user_data.FirstName + ' ' + user_data.LastName //user_values.FirstName +' ' + user_values.LastName
+          }
+          props.addData(data);
+          
           setTimeout(() => {
             setUploadStatus("")
           }, 2000)
-         
+          })
         });
-        
-        
-        // console.log(title);
-        // console.log(type);
-        // console.log(url);
-        props.history.push('/')
+      
       }
 
     );
@@ -106,57 +118,11 @@ const UploadVideo = (props) => {
 
   }
 
-  // const show = async () => {
-  //   // const storage = getStorage();
-  //   // getDownloadURL(ref(storage, 'images/'))
-  //   //   .then((url) => {
-  //   //     // `url` is the download URL for 'images/stars.jpg'
-
-  //   //     // This can be downloaded directly:
-  //   //     const xhr = new XMLHttpRequest({ header: 'Access-Control-Allow-Origin' });
-  //   //     xhr.responseType = 'blob';
-  //   //     xhr.onload = (event) => {
-  //   //       const blob = xhr.response;
-  //   //     };
-  //   //     xhr.open('GET', url);
-  //   //     xhr.send();
-
-  //   //     // Or inserted into an <img> element
-  //   //     // const img = document.getElementById('myimg');
-  //   //     // img.setAttribute('src', url);
-  //   //     //setURL(url);
-  //   //     console.log(url);
-  //   //   })
-  //   //   .catch((error) => {
-  //   //     // Handle any errors
-  //   //   });
-
-  //   const db = getDatabase(app);
-  //   const starCountRef = DatabaseRef(db, 'Videos/');
-  //   onValue(starCountRef, (snapshot) => {
-  //     const data = snapshot.val();
-  //     const real_data = Object.values(data);
-  //     //console.log(real_data);
-  //     let data_obj = {};
-  //     real_data.forEach((data) => {
-  //       data_obj = {
-  //         title: data.title,
-  //         type: data.type,
-  //         video_url: data.video_url
-  //       }
-  //       console.log(data_obj)
-
-  //       setVideoURL(prevStat => {
-  //         return [...prevStat, { ...data_obj }]
-  //       });
-
-  //     })
-  //     //updateStarCount(postElement, data);
-  //     console.log(videoURL);
-  //   });
-  // }
+ 
+  
   return (
     <div className="form-data">
+    
       <form onSubmit={onSubmit}>
         <div className="form">
           <input type="file" onChange={onFileChange} />
@@ -179,12 +145,29 @@ const UploadVideo = (props) => {
         <div className="form">
           <button >Submit</button>
         </div>
-
+         
 
       </form>
-      <h3>{uploadStatus}</h3>
+      <div className="Upload_status">
+         {
+            uploadStatus
+         }     
+      </div>
+ 
+      
     </div>
   )
 }
 
-export default UploadVideo;
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    uid: state.Auth.uid
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addData: (data) => dispatch(addData(data)) 
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(UploadVideo);

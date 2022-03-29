@@ -1,0 +1,42 @@
+.signIn{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.input {
+    margin-top: 35px;
+}
+
+.input > input {
+    height: 25px;
+    width: 200px;
+}
+
+.input > button {
+    height: 30px;
+    width: 208px;
+}
+
+.Input_error{
+    color: red;
+    font-size: 10px;
+    margin-right: 10px;
+}
+
+.Auth_error{
+    color: red;
+    font-size: 10px;
+    margin-right: 10px;
+}
+
+.Auth_success{
+    color: green;
+    font-size: 10px;
+    margin-right: 10px;
+ 
+}

@@ -2,9 +2,19 @@
 .displayVideo{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-wrap: wrap;
     width: 94%;
     margin-left: auto;
     background-color: #f7f7f7;
+}
+
+.displayCategory {
+    display: flex;
+    width: 94%;
+    margin-left: auto;
+    height: 65px;
+    align-items: center;
+
 }
