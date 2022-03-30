@@ -1,12 +1,12 @@
-import VideoData from "./VideoData";
-import FilterSearch from "./FilterSearch";
+import DataReducer from "./DataReducer";
+import FilterReducer from "./FilterReducer";
 import AuthReducer from "./AuthReducer";
 import { firebaseReducer } from "react-redux-firebase";
 import { combineReducers } from "redux";
 const RootReducer = combineReducers({
     Auth: AuthReducer,
-    VideoData: VideoData,
-    FilterSearch: FilterSearch,
+    VideoData: DataReducer,
+    FilterSearch: FilterReducer,
     firebase: firebaseReducer
 });
 

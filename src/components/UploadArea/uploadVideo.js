@@ -1,21 +1,17 @@
 import React from "react";
 import { useState } from 'react';
-import Dropzone from 'react-dropzone';
-import axios from 'axios';
 import  app  from '../Firebase';
 import './uploadVideo.css';
-import { addData } from "../../Action/videoData";
-import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { getDatabase, ref as DatabaseRef, set, push, onValue } from "firebase/database";
+import { addData } from "../../Action/DataActions";
+import { getStorage, ref,  uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { getDatabase, ref as DatabaseRef, onValue } from "firebase/database";
 import { connect } from "react-redux";
 
 const UploadVideo = (props) => {
   const [filePath, setFilePath] = useState("");
   const [title, setTitle] = useState("");
   const [type, setType] = useState("Comedy");
-  const [url, setURL] = useState("");
   const [uploadStatus, setUploadStatus] = useState("");
-  const [videoURL, setVideoURL] = useState([{}]);
   const onFileChange = (e) => {
     e.preventDefault();
 
@@ -23,10 +19,7 @@ const UploadVideo = (props) => {
   }
 
   const onSubmit = async (e) => {
-
     e.preventDefault();
-
-    //const database = app.database();
 
     let bucketName = 'Videos';
     let file = filePath;
@@ -40,10 +33,8 @@ const UploadVideo = (props) => {
     };
 
     const uploadTask = uploadBytesResumable(storageRef, file, metadata);
-    // Listen for state changes, errors, and completion of the upload.
     uploadTask.on('state_changed',
       (snapshot) => {
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
         console.log('Upload is ' + progress + '% done');
         setUploadStatus('Upload is ' + progress + '% done')
@@ -77,31 +68,18 @@ const UploadVideo = (props) => {
       () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          //console.log('File available at', downloadURL);
-          // const db = getDatabase(app);
-          // push(DatabaseRef(db, 'Videos/'), {
-          //   title: title,
-          //   type: type,
-          //   video_url: downloadURL
-          // }).then((result) => {
-          //   setUploadStatus(" Video Uploaded successfully")
-          //   //console.log(" Video Data added successfully")
-          // }).catch((err) => {
-          //   setUploadStatus("Error occurred while uploading Video")
-          //   //console.log(err, "Error occurred while uploading data");
-          // })
+          
           const db = getDatabase(app);
           const starCountRef = DatabaseRef(db, 'Users/'+ props.uid);
           onValue(starCountRef, (snapshot) => {
             const user_data = snapshot.val();
-            // const user_values = Object.values(user_data);
-             console.log(user_data);
+      
           setUploadStatus("Video Added Successfully");
           const data = {
             title: title,
             type: type,
             video_url: downloadURL,
-            uploadedBy: user_data.FirstName + ' ' + user_data.LastName //user_values.FirstName +' ' + user_values.LastName
+            uploadedBy: user_data.FirstName + ' ' + user_data.LastName 
           }
           props.addData(data);
           

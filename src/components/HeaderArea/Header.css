@@ -91,19 +91,34 @@ button:hover {
   background-color: white;
 }
 
-.icon > b {
+/* .icon > b {
   border-radius: 100%;
-  padding: 7px;
   width: 17px;
   height: 17px;
   background-color: #170645;
   color: white;
   margin-top: 10px;
   font-size: 10px;
-}
+} */
 
 .youtube {
   margin-left: 5px;
   margin-bottom: 3px;
   font-size: 20px;
 }
+
+.Icon_button{
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background-color: #170645;
+  color: white;
+  margin-bottom: 2px;
+  border: none;
+}
+
+.Icon_button:hover{
+  background-color: #170645;
+}
+
+

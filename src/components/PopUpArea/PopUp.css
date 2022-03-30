@@ -1,0 +1,30 @@
+
+.Popup {
+    width: 120px;
+    height: 100px; 
+    
+}
+
+.Popup > button {
+    width: 60px;
+    height: 25px;
+    padding-right: 5px;
+    margin-top: 37px;
+    margin-left: 10px;
+    font-size: 15px;
+    border: none;
+    background-color: red;
+    color: white;
+
+}
+
+.Popup > button:hover{
+    cursor: pointer;
+    background-color: red;
+}
+
+
+.Popup > button:disabled{
+    cursor: none;
+    background-color: gray;
+}

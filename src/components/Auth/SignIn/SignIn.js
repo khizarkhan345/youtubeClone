@@ -17,16 +17,23 @@ const SignIn = (props) => {
        
         if(email === '' || password === ''){
            setError("No Email or Password is Entered.")
-        }else{
+        }else if(!email.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)){
+          setError("Incorrect email format!")
+       }else{
           const credentials = {
             email: email,
             password: password
           }
    
            props.Signin(credentials);
-           console.log("LogIn is clicked");
            setAuthSuccess(props.logInSuccess);
-           setAuthError(props.logInError);
+           if(props.logInSuccess){
+             setTimeout(()=> {
+              navigate("/");
+            }, 1000)
+           }else{
+            setAuthError(props.logInError);
+           }
            setEmail("");
            setPassword("");
         }
@@ -34,7 +41,6 @@ const SignIn = (props) => {
         setError("");
         setAuthSuccess("");
         setAuthError("");
-        navigate("/");
       }, 1000)
     }
     return (
@@ -61,8 +67,8 @@ const SignIn = (props) => {
         {
           error ? <p className='Input_error'>{error}</p>:''
         }
-        {
-          authError ? <p className='Auth_error'>{authError}</p>:<p className='Auth_success'>{authSuccess}</p>
+        { 
+        authError ? <p className='Auth_error'>{authError}</p>:<p className='Auth_success'>{authSuccess}</p>
         }
       </div>
     )
@@ -72,7 +78,8 @@ const mapStateToProps = (state) => {
   console.log(state)
   return {
     logInSuccess: state.Auth.logInSuccess,
-    logInError: state.Auth.logInError
+    logInError: state.Auth.logInError,
+    uid: state.Auth.uid
   }
 }
 const mapDispatchToProps = (dispatch) => {
