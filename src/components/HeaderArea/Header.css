@@ -12,10 +12,14 @@ html {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 94%;
+  width: 100%;
   height: 60px;
   border-bottom: 1.5px solid #c4bebe;
-  margin-left: auto;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  z-index: 2000;
 }
 
 .button {
@@ -27,6 +31,7 @@ html {
 .header {
   display: flex;
   align-items: center;
+  margin-left: 10px;
 }
 
 /* button {
@@ -37,17 +42,18 @@ html {
 .Search {
   display: flex;
   margin: auto;
+  width: 100%;
 }
 
 .Search > input {
   border: 1.5px solid #c4bebe;
-  width: 500px;
-  margin-left: 45px;
+  width: 50%;
+  margin-left: 20%;
 }
 
 .search > button {
   border: 1.5px solid #c4bebe;
-  width: 70px;
+  width: 100%;
   align-items: center;
   height: 45px;
   background-color: #f7f7f7;
@@ -68,6 +74,7 @@ button:hover {
   background-color: #f7f7f7;
   padding-top: 5px;
   padding-left: 12px;
+  margin-left: 10px;
 }
 
 .Voice:hover {
@@ -88,8 +95,17 @@ button:hover {
 .icon {
   margin-left: 20px;
   margin-right: 20px;
-  background-color: white;
+  fill: #fff;
 }
+
+.icon-hidden {
+  display: none;
+}
+
+/* 
+.icon-white {
+  filter: invert(97%) sepia(4%) saturate(280%) hue-rotate(261deg) brightness(118%) contrast(100%);
+} */
 
 /* .icon > b {
   border-radius: 100%;
@@ -121,4 +137,19 @@ button:hover {
   background-color: #170645;
 }
 
+@media screen and (min-width: 768px) {
+   
+   .icon-hidden {
+     display: block;
+   }
+
+   .HeaderArea {
+     width: 92%;
+     margin-left: 8%;
+   }
+
+   .header {
+    margin-left: 0;
+   }
+}
 

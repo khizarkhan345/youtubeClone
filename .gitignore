@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /Firebase.js
+/src/components/Firebase.js/
 # testing
 /coverage
 

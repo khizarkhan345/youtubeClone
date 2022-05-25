@@ -46,18 +46,18 @@ const Header = (props) => {
               <MdSearch fontSize="2rem" />
             </button>
           </div>
-          <div className="Voice">
+          <div className="Voice icon-hidden">
             <MdSettingsVoice fontSize="2.5rem" />
           </div>
         </div>
         <div className="icons">
-          <div className="icon">
+          <div className="icon icon-hidden">
             <MdVideoCall fontSize="2.5rem" />
           </div>
-          <div className="icon">
+          <div className="icon icon-hidden">
             <MdViewComfy fontSize="2.5rem" />
           </div>
-          <div className="icon">
+          <div className="icon icon-hidden">
             <AiTwotoneBell fontSize="2.5rem" />
           </div>
           <div className="icon">

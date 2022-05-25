@@ -1,12 +1,12 @@
 
 .type {
-    margin-left: 20px;
+    margin-left: 10px;
     
 }
 
 .type > button {
     border-radius: 16px;
-    padding: 10px;
+    padding: 5px;
     background-color: #f7f7f7;
     border: 1px solid #e6e6e6;
     cursor: pointer;
@@ -24,4 +24,11 @@ button:active {
 button:visited {
     background-color: black;
     color: white;
+}
+
+@media screen and (min-width: 400px) {
+    
+    .type > button {
+        padding: 10px;
+    }
 }
