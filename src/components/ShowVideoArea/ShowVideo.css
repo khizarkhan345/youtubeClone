@@ -12,6 +12,10 @@
 .video > h3 {
     text-align: center;
 }
+
+.video__title {
+    text-align: center;
+}
 /* .video > ReactPlayer{
     
 } */

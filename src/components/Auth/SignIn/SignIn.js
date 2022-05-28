@@ -27,10 +27,9 @@ const SignIn = (props) => {
    
            props.Signin(credentials);
            setAuthSuccess(props.logInSuccess);
-           if(props.logInSuccess){
-             setTimeout(()=> {
+           if(authSuccess){
+              setAuthSuccess("");
               navigate("/");
-            }, 1000)
            }else{
             setAuthError(props.logInError);
            }
@@ -42,6 +41,8 @@ const SignIn = (props) => {
         setAuthSuccess("");
         setAuthError("");
       }, 1000)
+
+      navigate("/");
     }
     return (
        <div className='signIn'>
@@ -65,7 +66,7 @@ const SignIn = (props) => {
         
         </div>
         {
-          error ? <p className='Input_error'>{error}</p>:''
+          authSuccess ? <p className='Input_error'>{authSuccess}</p>:''
         }
         { 
         authError ? <p className='Auth_error'>{authError}</p>:<p className='Auth_success'>{authSuccess}</p>

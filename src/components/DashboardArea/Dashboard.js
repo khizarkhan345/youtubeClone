@@ -61,8 +61,8 @@ const Dashboard = (props) => {
         ))}
       </div>
       <div className="displayVideo">
-        {props.data.map((d) => (
-          <ShowVideo title={d.title} type={d.type} url={d.video_url} />
+        {props.data.length === 0 ? <div className="disconnect"><h3 className="disconnect__heading">Connect to the internet</h3><p className="disconnect__msg">You are offline. Check your internet connection.</p></div>:props.data.map((d) => (
+          <ShowVideo title={d.title} type={d.type} url={d.video_url} uploadedBy = {d.uploadedBy} />
         ))}
         {console.log(props.data)}
       </div>

@@ -81,6 +81,7 @@ const UploadVideo = (props) => {
             video_url: downloadURL,
             uploadedBy: user_data.FirstName + ' ' + user_data.LastName 
           }
+          
           props.addData(data);
           
           setTimeout(() => {

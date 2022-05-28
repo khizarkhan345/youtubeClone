@@ -14,7 +14,8 @@ const ShowVideo = (props) => {
             height="230px"
             controls="true"
           />
-          <h2>{props.title}</h2>
+          <h2 className="video__title">{props.title}</h2>
+          <h3 className="author__name">Uploaded By: {props.uploadedBy}</h3>
         </div>
       </div>
     </div>

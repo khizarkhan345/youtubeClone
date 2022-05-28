@@ -6,7 +6,7 @@ import "./PopUp.css";
 const PopUp = (props) => {
   return (
     <div className="Popup">
-      <button onClick={props.Signout} disabled={!props.uid}>
+      <button className="popup__button" onClick={props.Signout} disabled={!props.uid}>
         LogOut
       </button>
     </div>
